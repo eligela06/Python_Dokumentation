@@ -12,4 +12,3 @@ popped_tag = tags.pop()
 print(popped_tag)
 print(tags)
 
-# Build a set tags from raw_tags. Add the new tag "dictionaries", conditionally remove "beginner" only if present (using if/.remove()), safely discard "advanced" even though it isn't present (using .discard()), and finally .pop() an arbitrary element, printing it and the resulting set.
