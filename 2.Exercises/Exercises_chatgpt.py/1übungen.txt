@@ -1,0 +1,86 @@
+Übungen
+
+1. Erweiterter Taschenrechner
+Frage den Benutzer nach zwei Zahlen und einer Operation (+, -, *, /, %). Berechne das Ergebnis. Bei einer Division durch 0 soll eine Fehlermeldung ausgegeben werden.
+
+2. Notenrechner
+Frage nach einer Punktzahl von 0 bis 100 und gib die entsprechende Note aus:
+
+90–100 → Sehr gut
+80–89 → Gut
+70–79 → Befriedigend
+60–69 → Genügend
+unter 60 → Ungenügend
+
+Ungültige Werte wie 120 oder -5 sollen erkannt werden.
+
+3. Ticketpreis berechnen
+Frage nach dem Alter einer Person:
+
+unter 6 → kostenlos
+6–15 → 8 CHF
+16–64 → 15 CHF
+ab 65 → 10 CHF
+
+Frage zusätzlich, ob die Person Student ist (yes/no). Studenten zwischen 16 und 64 bezahlen nur 12 CHF.
+
+4. Größte von drei Zahlen
+Frage nach drei Zahlen und gib die größte aus. Falls zwei oder alle drei Zahlen gleich groß sind, soll dein Programm das ebenfalls erkennen.
+
+5. Login-System
+Frage nach Benutzername und Passwort. Der korrekte Benutzername ist "admin" und das Passwort "python123". Gib unterschiedliche Meldungen aus für:
+
+beides korrekt
+Benutzername falsch
+Passwort falsch
+
+6. BMI-Kategorie
+Frage nach Gewicht in kg und Körpergröße in Metern. Berechne:
+
+BMI = Gewicht / (Größe * Größe)
+
+Gib anschließend eine Kategorie aus:
+
+unter 18.5 → Untergewicht
+18.5–24.9 → Normalgewicht
+25–29.9 → Übergewicht
+ab 30 → Adipositas
+
+7. Mini-Bankautomat
+Der Benutzer hat 1000 CHF auf seinem Konto. Frage, welche Aktion er durchführen möchte: "balance", "deposit" oder "withdraw".
+
+Bei "withdraw" fragst du nach dem Betrag. Prüfe, ob genügend Geld vorhanden ist. Bei "deposit" fragst du ebenfalls nach einem Betrag und berechnest den neuen Kontostand.
+
+8. Schaltjahr prüfen ⭐
+Frage nach einem Jahr und entscheide, ob es ein Schaltjahr ist.
+
+Regeln:
+
+Durch 400 teilbar → Schaltjahr
+Sonst durch 100 teilbar → kein Schaltjahr
+Sonst durch 4 teilbar → Schaltjahr
+Sonst → kein Schaltjahr
+
+Beispiel: 2000 → Schaltjahr, 1900 → kein Schaltjahr, 2024 → Schaltjahr.
+
+9. Versandkosten-Rechner ⭐⭐
+Frage nach dem Bestellwert und dem Land ("CH", "DE" oder "FR").
+
+Regeln:
+
+CH: 7 CHF Versand, ab 80 CHF kostenlos
+DE: 12 CHF Versand, ab 100 CHF kostenlos
+FR: 15 CHF Versand, ab 120 CHF kostenlos
+
+Gib Versandkosten und Gesamtpreis aus. Ein unbekanntes Land soll erkannt werden.
+
+10. Einfaches Adventure-Game ⭐⭐⭐
+Der Spieler steht vor zwei Türen und gibt "left" oder "right" ein.
+
+Links → Frage, ob er "fight" oder "run" möchte.
+Rechts → Frage, ob er "open" oder "ignore" bei einer Schatztruhe wählt.
+Abhängig von der Kombination bekommt er unterschiedliche Enden.
+
+Beispielsweise kann "left" + "fight" zum Sieg führen, während "left" + "run" bedeutet, dass der Spieler flieht.
+
+Mein Vorschlag
