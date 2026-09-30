@@ -3,5 +3,6 @@ def hello():
         return "Hi"
     elif 5 == 5:
         return "Helloo"
+    print("Yesaa")
 
 print(hello())
