@@ -1,23 +1,11 @@
+# A multiset is like a set but keeps track of how many times each item occurs — a plain dictionary mapping each item to its count can represent one. You are given a pantry and a recipe, both represented this way:
+
+# pantry = {"egg": 6, "flour": 2, "sugar": 1, "butter": 3}
+# recipe = {"egg": 2, "flour": 3, "sugar": 1, "vanilla": 1}
+
+# Using only dictionaries, loops, and conditionals, determine: (a) which ingredients (and how much of each) are missing from the pantry to make the recipe (only include ingredients where the recipe needs more than the pantry has), (b) how much of each ingredient the recipe would actually use from the pantry (the smaller of the two counts, for ingredients present in both), and (c) what the pantry would look like after baking if missing ingredients are simply ignored (subtract what the recipe uses, never going below zero).
+
+
 pantry = {"egg": 6, "flour": 2, "sugar": 1, "butter": 3}
 recipe = {"egg": 2, "flour": 3, "sugar": 1, "vanilla": 1}
-missing = {}
-taken_ingredients = {}
-pantry_after = pantry.copy()
 
-for ingredient in recipe:
-    available = pantry.get(ingredient, 0)
-    needed = recipe[ingredient]
-
-    if available < needed:
-        missing[ingredient] = needed - available
-        used = available
-    else:
-        used = needed
-
-    if ingredient in pantry:
-        taken_ingredients[ingredient] = used
-        pantry_after[ingredient] = available - used
-
-print("Missing ingredients:", missing)
-print("Used from pantry:", taken_ingredients)
-print("Pantry after baking:", pantry_after)
