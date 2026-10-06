@@ -9,3 +9,28 @@
 pantry = {"egg": 6, "flour": 2, "sugar": 1, "butter": 3}
 recipe = {"egg": 2, "flour": 3, "sugar": 1, "vanilla": 1}
 
+
+missing = dict()
+used = dict()
+remaining = dict()
+
+for element, amount in recipe.items():
+    if element not in pantry:
+        missing[element] = amount
+        continue
+
+    if amount > pantry[element]:
+        missing[element] = amount - pantry[element]
+        used[element] = pantry[element]
+    else:
+        used[element] = amount
+
+for element, amount in pantry.items():
+    if element in used:
+        remaining[element] = amount - used[element]
+    else:
+        remaining[element] = amount
+
+print("Missing:", missing)
+print("Used:", used)
+print("Remaining:", remaining)
