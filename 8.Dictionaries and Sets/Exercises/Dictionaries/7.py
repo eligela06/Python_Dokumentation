@@ -14,39 +14,49 @@ votes = ["red", "blue", "red", "green", "blue", "red", "yellow", "blue", "green"
 invalid = {"red": 2, "blue": 1}
 
 
-votes_dict = {}
+vote_counts = {}
 for vote in votes:
-    if vote not in votes_dict:
-        votes_dict[vote] = 1
+    if vote not in vote_counts:
+        vote_counts[vote] = 1
     else:
-        votes_dict[vote] += 1
+        vote_counts[vote] += 1
 
 
-first_place = max(votes_dict, key=votes_dict.get)
-other_candidates = {}
+highest_count = max(vote_counts.values())
+first_place = [
+    candidate for candidate, count in vote_counts.items()
+    if count == highest_count
+]
 
-for candidate, count in votes_dict.items():
-    if candidate == first_place:
-        continue
-    else:
-        other_candidates[candidate] = count
+second_count = max(
+    (count for count in vote_counts.values() if count < highest_count),
+    default=None,
+)
+second_place = [
+    candidate for candidate, count in vote_counts.items()
+    if count == second_count
+]
 
-second_place = max(other_candidates, key=other_candidates.get)
-
-if votes_dict[first_place] == votes_dict[second_place]:
-    tied_candidates = [
-        candidate for candidate, count in votes_dict.items()
-        if count == votes_dict[first_place]
-    ]
-    print(f"Gleichstand: {', '.join(tied_candidates)} haben jeweils {votes_dict[first_place]} Stimmen.")
-else:
+if len(first_place) > 1:
     print(
-        f"{first_place} hat mit {votes_dict[first_place]} Stimmen gewonnen; "
-        f"{second_place} ist mit {votes_dict[second_place]} Stimmen Zweiter."
+        f"Gleichstand auf dem ersten Platz: {', '.join(first_place)} "
+        f"haben jeweils {highest_count} Stimmen."
     )
+else:
+    print(f"{first_place[0]} hat mit {highest_count} Stimmen gewonnen.")
+
+if second_place:
+    print(
+        f"Auf dem zweiten Platz: {', '.join(second_place)} "
+        f"mit jeweils {second_count} Stimmen."
+    )
+elif len(first_place) == 1:
+    print("Es gibt keinen getrennten zweiten Platz.")
 
 for invalid_vote, invalid_count in invalid.items():
-    if invalid_vote in votes_dict:
-        votes_dict[invalid_vote] = max(0, votes_dict[invalid_vote] - invalid_count)
+    if invalid_vote in vote_counts:
+        vote_counts[invalid_vote] = max(
+            0, vote_counts[invalid_vote] - invalid_count
+        )
 
-print("Angepasste Stimmenzahlen:", votes_dict)
+print("Angepasste Stimmenzahlen:", vote_counts)
