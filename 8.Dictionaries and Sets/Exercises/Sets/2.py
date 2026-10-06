@@ -5,7 +5,6 @@
 
 # Split each into a set of words. Compute and print the common words, the words unique to each sentence, and the full combined vocabulary. 
 # Then compute and print the overlap ratio: the number of common words divided by the number of total unique words (as a "x/y" string).
-{'lazy', 'jumps', 'while', 'sleeps', 'quick', 'the', 'fox', 'over', 'cat', 'watches', 'dog', 'brown'}
 
 sentence_a = "the quick brown fox jumps over the lazy dog"
 sentence_b = "the lazy cat sleeps while the quick dog watches"
