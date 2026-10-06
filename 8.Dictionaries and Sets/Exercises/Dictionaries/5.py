@@ -1,13 +1,25 @@
-paragraph = "The rain in Spain falls mainly on the plain. The plain is flat, and the rain is steady."
+# Inverting a one-to-many mapping
 
-word_frequencies = {}
+# You are given a dictionary mapping each capital city to a population tier, where multiple cities can share a tier:
 
-for word in paragraph.split():
-	cleaned_word = "".join(character for character in word if character.isalpha()).lower()
-	if cleaned_word:
-		word_frequencies[cleaned_word] = word_frequencies.get(cleaned_word, 0) + 1
+# capital_pop_tier = {
+#   "Paris": "large", "Tokyo": "large", "Rome": "medium",
+#   "Bern": "small", "Vienna": "medium", "Reykjavik": "small",
+# }
 
-most_frequent_word = max(word_frequencies, key=word_frequencies.get)
+# Invert it into a tier_to_capitals dictionary mapping each tier to a list of capitals sharing that tier.
 
-print(word_frequencies)
-print(f"Most frequent word: {most_frequent_word} ({word_frequencies[most_frequent_word]} times)")
+
+capital_pop_tier = {
+  "Paris": "large", "Tokyo": "large", "Rome": "medium",
+  "Bern": "small", "Vienna": "medium", "Reykjavik": "small",
+}
+
+tier_to_capitals = {}
+
+for capital, tier in capital_pop_tier.items():
+    if tier not in tier_to_capitals:
+        tier_to_capitals[tier] = []
+    tier_to_capitals[tier].append(capital)
+
+print(tier_to_capitals)

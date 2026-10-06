@@ -8,11 +8,12 @@ t = turtle.Turtle()
 t.color("yellow", "orange")
 t.width(10)
 
+
 t.begin_fill()
 
-for _ in range(4):
-    t.forward(100)
-    t.right(90)
+for _ in range(7):
+    t.forward(200)
+    t.right(102)
 
 t.end_fill()
 
