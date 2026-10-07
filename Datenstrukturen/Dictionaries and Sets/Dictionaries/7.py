@@ -4,7 +4,8 @@
 
 # votes = ["red", "blue", "red", "green", "blue", "red", "yellow", "blue", "green", "red"]
 
-# Erstelle ein Dictionary, das die Stimmen fuer jeden Kandidaten zaehlt. Ermittle die beiden Kandidaten mit den meisten Stimmen und gib einen Satz mit dem Gewinner, dem Zweitplatzierten und ihren jeweiligen Stimmenzahlen aus. Ziehe anschliessend die folgenden ungueltigen Stimmen ab:
+# Erstelle ein Dictionary, das die Stimmen fuer jeden Kandidaten zaehlt. Ermittle die beiden Kandidaten mit den meisten Stimmen und gib einen Satz mit dem Gewinner, 
+# dem Zweitplatzierten und ihren jeweiligen Stimmenzahlen aus. Ziehe anschliessend die folgenden ungueltigen Stimmen ab:
 
 # invalid = {"red": 2, "blue": 1}
 
