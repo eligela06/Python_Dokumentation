@@ -14,7 +14,6 @@ frequenzy = {}
 
 clean_words = []
 
-
 for word in words:
     clean_word = ""
     for letter in word:
@@ -22,12 +21,14 @@ for word in words:
             clean_word += letter
     clean_words.append(clean_word)
 
-for word in clean_words:
-    if word not in frequenzy:
-        frequenzy[word] = 1
-    else:
-        frequenzy[word] += 1
+    frequenzy[clean_word] = frequenzy.get(clean_word,0)+1
 
-top = max(frequenzy, key = frequenzy.get)
+# for word in clean_words:
+#     if word not in frequenzy:
+#         frequenzy[word] = 1
+#     else:
+#         frequenzy[word] += 1
+
 print(top)
 print(frequenzy)
+top = max(frequenzy, key = frequenzy.get)
