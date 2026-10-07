@@ -29,6 +29,7 @@ for word in words:
 #     else:
 #         frequenzy[word] += 1
 
-print(top)
+
 print(frequenzy)
 top = max(frequenzy, key = frequenzy.get)
+print(top)
