@@ -5,6 +5,8 @@ Ordnerstruktur:
         - Dictionaries and Sets
     - IfElse
 
+    - Funktionen
+
     - Klassen
 
     - Loops
