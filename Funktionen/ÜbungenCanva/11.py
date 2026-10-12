@@ -16,6 +16,5 @@ def best_student(data):
 
     return top_student
 
-
 top_student = best_student(grades)
 print("Best student:", top_student, "\nAverage:", average(grades[top_student]))
