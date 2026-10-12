@@ -6,7 +6,7 @@ def min_max(nums):
     for number in nums:
         if number > highest:
             highest = number
-        if number < lowest:
+        elif number < lowest:
             lowest = number
     return lowest, highest
 
