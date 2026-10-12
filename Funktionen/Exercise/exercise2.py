@@ -1,3 +1,8 @@
+from functools import wraps
+
+
+
+
 def document_it(func):
      def new_function(*args, **kwargs):
          print('Running function:', func.__name__)
@@ -11,6 +16,17 @@ def document_it(func):
 
 @document_it
 def calc(num1,num2):
-    return num1 + num2
+    return num1 * num2
 
-print(calc(1,3))
+
+
+calc(4,5)
+
+
+def tst(str1,str2):
+    @wraps
+    def add(*args):
+        pass
+    return add
+
+tst("Hallo","Elia")
