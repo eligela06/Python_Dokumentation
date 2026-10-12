@@ -22,3 +22,7 @@ documents = [
    "cats and dogs are friends",
    "the mat was chewed by the dog",
 ]
+
+
+
+print(documents)
