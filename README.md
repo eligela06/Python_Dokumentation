@@ -1,42 +1,46 @@
-Ordnerstruktur:
+# Python Learning
 
-    - Datenstrukturen
-        - Tuples and List
-        - Dictionaries and Sets
-    - IfElse
+This repository collects Python exercises and small projects as a record of my
+learning progress. Some examples may contain mistakes or unfinished code.
 
-    - Funktionen
+## Folder structure
 
-    - Klassen
+```text
+data_structures/
+  dictionaries_and_sets/
+    dictionaries/
+      comprehensions/
+      exercises/
+    sets/
+  tuples_and_lists/
+    exercises/
+    list_comprehensions/
+functions/
+  exercises/
+  lambda_expressions/
+  nested_functions/
+  practice_exercises/
+    custom_exercises/
+conditionals/
+  exercises/
+classes/
+loops/
+  exercises/
+mini_games/
+  guess_the_number/
+  guess_the_word/
+  rock_paper_scissors/
+  tic_tac_toe/
+modules/
+  argparse/
+  turtle/
+```
 
-    - Loops
+Python files are named after their main topic or behavior. For example, list
+comprehension examples are in
+[`data_structures/tuples_and_lists/list_comprehensions`](data_structures/tuples_and_lists/list_comprehensions),
+and dictionary exercises are in
+[`data_structures/dictionaries_and_sets/dictionaries`](data_structures/dictionaries_and_sets/dictionaries).
 
-    - MiniGames
-        - Guess the number
-        - Guess the word
-        - Schere stein Papier
-        - TicTacToe
-
-    - Module 
-        - Argeparse
-        - Turtle
-    
-    - WiederverwendbareFunktionen
-    - README
-    
-
-Dieses Repository wurde ins Leben gerufen um meine Privaten Python fortschritte zu dokumentieren und speichern.
-
-Die Dateien können Fehler enthalten.
-
-Wie du dieses Repository nutzt:
-Es ist eine Ansammlung von Übungen die ich gelöst habe. Die Übungen können auch die Aufgabestellung enthalten die meisten Dateien aber sind einfach code.
-
-Es soll dir helfen wenn du z.b nicht mehr weist wie eine "list comprehension" funktioniert. Du gehst in dne Ordner Datenstrukturen -> Tuples und list -> List -> list comprehension. 
-Dort findest du dann Code der dir helfen soll wieder reinzukommen. 
-
-Du findest im Repository keine erklärungen zu den verschiedenen Themen.
-
-Viel spass
-
-@eligela06
+The repository is primarily a collection of code examples, not a reference
+guide; most files do not contain detailed explanations.
