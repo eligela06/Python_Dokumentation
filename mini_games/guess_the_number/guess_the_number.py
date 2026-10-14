@@ -85,7 +85,6 @@ def except_error_message():
     global message
     print(message)
 
-
 random_number()
 username = input("Gib deinen Namen ein: ")
 # Game Loop
