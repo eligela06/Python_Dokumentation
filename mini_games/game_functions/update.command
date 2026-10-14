@@ -1,5 +1,5 @@
+#!/usr/bin/env python3
 import time
-
 
 def ladebalken():
     for i in range(1, 51):
@@ -10,9 +10,6 @@ def ladebalken():
         print(f"\r{percent:3}% [{orange}{'#' * i}{reset}{'-' * (50 - i)}]", end="", flush=True)
         time.sleep(0.5)
     print(f"\r{percent:3}% [{green}{'#' * i}{reset}{'-' * (50 - i)}]", end="", flush=True)
-
-ladebalken()
-
 
 def loading():
     orange = "\033[93m"
@@ -26,5 +23,22 @@ def loading():
 
     print(f"\r\033[K{green}Loading... fertig{reset}")
 
+def never_ending():
+    strings = [
+        "Almost there",
+        "Only a few seconds left",
+        "Just a moment longer",
+        "We're nearly done",
+        "Hang tight, it won't be long",
+        "Thanks for your patience",
+    ]
+    print("Install update for Python 3.14.8")
+    message_index = 0
+    while True:
+        message_index = (message_index + 1) % len(strings)
+        print(strings[message_index])
+        ladebalken()
+        loading()
 
-loading()
+
+never_ending()
