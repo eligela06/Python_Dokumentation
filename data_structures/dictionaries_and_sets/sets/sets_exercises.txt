@@ -1,0 +1,94 @@
+Sets
+## Set methods in sequence
+You are given a list of tags with duplicates:
+
+```
+raw_tags = ["python", "coding", "python", "beginner", "coding", "tutorial"]
+```
+Build a set `tags` from `raw_tags`. Add the new tag `"dictionaries"`, conditionally remove `"beginner"` only if present (using `if`/`.remove()`), safely discard `"advanced"` even though it isn't present (using `.discard()`), and finally `.pop()` an arbitrary element, printing it and the resulting set.
+
+## Vocabulary overlap between two sentences
+You are given two sentences:
+
+```
+sentence_a = "the quick brown fox jumps over the lazy dog"
+sentence_b = "the lazy cat sleeps while the quick dog watches"
+```
+Split each into a set of words. Compute and print the common words, the words unique to each sentence, and the full combined vocabulary. Then compute and print the **overlap ratio**: the number of common words divided by the number of total unique words (as a `"x/y"` string).
+
+## Simulating a multiset with a dictionary
+A *multiset* is like a set but keeps track of how many times each item occurs — a plain dictionary mapping each item to its count can represent one. You are given a pantry and a recipe, both represented this way:
+
+```
+pantry = {"egg": 6, "flour": 2, "sugar": 1, "butter": 3}
+recipe = {"egg": 2, "flour": 3, "sugar": 1, "vanilla": 1}
+```
+Using only dictionaries, loops, and conditionals, determine: (a) which ingredients (and how much of each) are **missing** from the pantry to make the recipe (only include ingredients where the recipe needs more than the pantry has), (b) how much of each ingredient the recipe would actually **use** from the pantry (the smaller of the two counts, for ingredients present in both), and (c) what the pantry would look like **after baking** if missing ingredients are simply ignored (subtract what the recipe uses, never going below zero).
+
+## `frozenset` for undirected graph edges
+You are given a list of raw edges, some of which are duplicates or the same edge listed in reverse order:
+
+```
+raw_edges = [("A", "B"), ("B", "A"), ("B", "C"), ("C", "D"), ("A", "B"), ("D", "C")]
+```
+Build a set of `frozenset` pairs representing the distinct, order-independent edges. Print the number of distinct connections, then check whether the edge `("A", "B")` exists in the set regardless of the order its endpoints are given in (also check that `("X", "Y")` does not).
+
+## Classifying set relationships
+You are given a list of set pairs:
+
+```
+pairs = [
+    ({1, 2}, {1, 2, 3, 4}),
+    ({1, 2, 3, 4}, {1, 2}),
+    ({1, 2}, {3, 4}),
+    ({1, 2, 3}, {3, 4, 5}),
+    ({1, 2}, {1, 2}),
+]
+```
+For each pair, use `.issubset()`, `.issuperset()`, and `.isdisjoint()` to classify the relationship between the two sets as `"equal"`, `"proper subset"`, `"proper superset"`, `"disjoint"`, or `"overlapping"`. Print the classification for every pair.
+
+## Extracting unique values from parsed strings
+You are given a list of email addresses:
+
+```
+emails = ["ana@example.com", "ben@school.edu", "cid@example.com",
+          "dea@work.org", "eli@school.edu", "fay@example.com"]
+```
+Build a set of the unique domains (the part after `@`) across all addresses. Then build a second set containing just the organization name in uppercase, without the top-level domain (e.g., `"example.com"` → `"EXAMPLE"`).
+
+## Symmetric difference across 3+ sets
+You are given three sets representing class rosters:
+
+```
+class_a = {"Tom", "Jerry", "Spike", "Tyke"}
+class_b = {"Jerry", "Tyke", "Butch"}
+class_c = {"Tom", "Butch", "Nibbles"}
+```
+Find all students who appear in **exactly one** of the three classes (not two, not three). Careful: chaining the `^` operator pairwise across all three sets does not correctly generalize to "appears in exactly one of three or more sets" — think about why, and find an approach that gives the right answer.
+
+## Order-preserving deduplication
+You are given a log of repeated action names:
+
+```
+log = ["login", "click", "click", "scroll", "login", "purchase", "scroll", "logout", "click"]
+```
+Deduplicate `log` while **preserving the original order** of first appearance, using a `set` as a "seen" tracker alongside a list. Then verify your result matches `list(dict.fromkeys(log))`.
+
+## Detecting repeated tuples
+You are given a list of `(x, y)` coordinate tuples representing visited points, some repeated:
+
+```
+visits = [(0, 0), (1, 2), (3, 4), (1, 2), (5, 6), (3, 4), (3, 4), (7, 8)]
+```
+Use two sets — one for points already seen and one for detected repeats — to determine which points were visited more than once, in a single pass through the list.
+
+## Connected components via set-merging
+You are given a list of pairwise connections (tuples of two names that are directly linked):
+
+```
+connections = [
+    ("Ana", "Ben"), ("Ben", "Cid"), ("Dea", "Eli"),
+    ("Fay", "Gia"), ("Cid", "Hal"), ("Eli", "Fay"),
+]
+```
+Group all names into clusters of mutually connected people using only sets and loops (no imports). For each new connection, check whether either name already belongs to an existing cluster set; merge the two clusters together if both names are found in different clusters, extend an existing cluster if only one name is found, or start a new cluster if neither is found. Print the final clusters, and verify that every name appears in exactly one cluster.

@@ -1,0 +1,112 @@
+Dictionaries
+Building and transforming a dictionary
+
+You are given two parallel lists:
+
+names = ["Widget", "Gadget", "Gizmo", "Doohickey", "Thingamajig"]
+prices = [12.50, 45.00, 8.75, 60.00, 22.00]
+
+Combine names and prices into an inventory dictionary mapping each item to its price. Then create a new discounted dictionary that applies a 10% discount (rounded to 2 decimals) to any item priced above $20, leaving other prices unchanged.
+
+Merging with accumulation
+
+You have three dictionaries, each mapping product names to quantities sold that month (some products repeat across months, some don't):
+
+jan_sales = {"pen": 100, "notebook": 50, "eraser": 30}
+feb_sales = {"notebook": 40, "eraser": 20, "ruler": 15}
+mar_sales = {"pen": 60, "ruler": 25, "stapler": 10}
+
+Write code that merges all three into a single quarter_totals dictionary where overlapping products have their quantities summed, not overwritten. Then find and print the best-selling product and its quantity.
+
+Tuple values
+
+You are given a catalog dictionary mapping product names to (price, quantity) tuples:
+
+catalog = {
+  "pen": (1.50, 200),
+  "notebook": (3.00, 80),
+  "backpack": (45.00, 15),
+  "laptop": (899.00, 4),
+  "eraser": (0.50, 150),
+}
+
+Compute the total inventory value (price × quantity, summed over all products). Then, for each product, classify it by its price as "budget" (< $5), "standard" (< $100), or "premium" (otherwise), printing each product with its tier.
+
+Deriving a new dictionary from another
+
+You are given a dictionary scores mapping student names to numeric scores:
+
+scores = {"Ana": 92, "Ben": 67, "Cid": 81, "Dea": 55, "Eli": 74, "Fay": 40}
+
+Build a grades dictionary mapping each name to a letter grade ("A" ≥ 90, "B" ≥ 80, "C" ≥ 70, "D" ≥ 60, else "F"). Then build a second dictionary, passing, containing only students with a score of 60 or above.
+
+Inverting a one-to-many mapping
+
+You are given a dictionary mapping each capital city to a population tier, where multiple cities can share a tier:
+
+capital_pop_tier = {
+  "Paris": "large", "Tokyo": "large", "Rome": "medium",
+  "Bern": "small", "Vienna": "medium", "Reykjavik": "small",
+}
+
+Invert it into a tier_to_capitals dictionary mapping each tier to a list of capitals sharing that tier.
+
+Manual word frequency
+
+You are given the following paragraph:
+
+paragraph = "The rain in Spain falls mainly on the plain. The plain is flat, and the rain is steady."
+
+Split it into words, strip out any non-alphabetic characters from each word (do not use string.punctuation or regular expressions), and build a frequency dictionary. Then find the most frequent word.
+
+Vote tallying and adjustment
+
+You are given a list of candidate names representing votes cast (with repeats):
+
+votes = ["red", "blue", "red", "green", "blue", "red", "yellow", "blue", "green", "red"]
+
+Build a tally dictionary counting the votes each candidate received. Determine the two candidates with the highest vote counts and print a sentence naming the winner and the runner-up, along with their vote counts. Finally, given a second dictionary of votes to retract:
+
+invalid = {"red": 2, "blue": 1}
+
+subtract these counts from the tally (a candidate's adjusted count should never go below zero) and print the adjusted totals.
+
+Nested dictionaries for grouped word count
+
+You are given a list of (category, review_text) tuples:
+
+reviews = [
+  ("electronics", "great battery life"),
+  ("books", "great plot and great characters"),
+  ("electronics", "battery drains fast"),
+  ("books", "slow start but great ending"),
+  ("electronics", "great screen quality"),
+]
+
+Build a category_word_counts dictionary that maps each category to another dictionary of word frequencies within that category's reviews (i.e., a dictionary of dictionaries). Print each category's two most common words along with their counts.
+
+LRU cache using a plain dictionary
+
+Regular dictionaries remember the order in which their keys were inserted. Using only a plain dictionary (no other data structure), simulate a simple Least-Recently-Used (LRU) cache with a fixed capacity of 3, processing the following sequence of key accesses in order:
+
+capacity = 3
+access_sequence = ["A", "B", "C", "A", "D", "B", "E"]
+
+On a cache hit, "refresh" the key so it counts as most-recently-used (hint: removing and re-inserting a key moves it to the end of the dictionary's order). On a cache miss, if the cache is already full, evict the oldest entry (the first key produced when iterating over the dictionary) before inserting the new key. Print the cache state after every access, labeled HIT, MISS, and EVICT as appropriate.
+
+Inverted index (mini search engine)
+
+You are given a list of documents:
+
+documents = [
+   "the cat sat on the mat",
+   "the dog chased the cat",
+   "cats and dogs are friends",
+   "the mat was chewed by the dog",
+]
+
+Build an index dictionary mapping each word to the set of document indices (using enumerate()) in which it appears. Then, given the query:
+
+query_words = {"the", "cat"}
+
+compute the set of document indices that contain all of the query words (i.e., the intersection of their posting sets), handling the case where a query word never appears in any document. Finally, build a frozen_index where every posting set is converted to a frozenset.

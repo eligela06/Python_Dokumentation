@@ -9,30 +9,3 @@
 # On a cache miss, if the cache is already full, evict the oldest entry (the first key produced when iterating over the dictionary) before inserting the new key. Print the cache state after every access, labeled HIT, MISS, and EVICT as appropriate.
 
 
-capacity = 3
-access_sequence = ["A", "B", "C", "A", "D", "B", "E"]
-
-cache = dict()
-
-for access in access_sequence:
-
-    if access in cache:
-        # HIT
-        del cache[access]
-        cache[access] = None
-        print("HIT")
-
-    else:
-        # MISS
-        print("MISS")
-
-        if len(cache) == capacity:
-            # EVICT
-            oldest = next(iter(cache))
-            del cache[oldest]
-            print("EVICT", oldest)
-
-        cache[access] = None
-
-    print(cache)
-

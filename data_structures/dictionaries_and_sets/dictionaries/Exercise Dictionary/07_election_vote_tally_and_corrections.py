@@ -17,10 +17,7 @@ invalid = {"red": 2, "blue": 1}
 
 vote_counts = {}
 for vote in votes:
-    if vote not in vote_counts:
-        vote_counts[vote] = 1
-    else:
-        vote_counts[vote] += 1
+    vote_counts[vote] = vote_counts.get(vote, 0) + 1
 
 
 highest_count = max(vote_counts.values())
