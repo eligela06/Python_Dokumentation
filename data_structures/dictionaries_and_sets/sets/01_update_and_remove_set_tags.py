@@ -9,7 +9,6 @@
 
 raw_tags = ["python", "coding", "python", "beginner", "coding", "tutorial"]
 
-
 tags = set(raw_tags)
 tags.add("dictionaries")
 

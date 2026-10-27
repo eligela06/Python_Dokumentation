@@ -1,8 +1,6 @@
 import random
 import sqlite3
 
-game = True
-number = 0
 guess = 0
 guess_count = 0
 message = "Gebe nur Zahlen ein!"

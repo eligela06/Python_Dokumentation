@@ -1,9 +1,9 @@
-def say_hello():
-    print("Hello, Python!")
+def say_hello(name="World"):
+    print(f"Hello {name}")
+    return name
 
 
-say_hello()
-say_hello()
-say_hello()
+say_hello("Ruby")
+say_hello(1)
 
-# Ohne Klammern wird die Funktion nur referenziert, aber nicht aufgerufen.
+print(say_hello())
