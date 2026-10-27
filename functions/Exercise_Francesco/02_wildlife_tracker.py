@@ -1,7 +1,9 @@
+# Counts all recorded sightings.
 def count_sightings(observations):
     return len(observations)
 
 
+# Counts sightings of a species, ignoring letter case.
 def count_species(observations, species):
     count = 0
     for observation in observations:
@@ -10,6 +12,7 @@ def count_species(observations, species):
     return count
 
 
+# Returns unique species, preserving the spelling of their first occurrence.
 def unique_species(observations):
     result = []
     seen = []
@@ -21,6 +24,7 @@ def unique_species(observations):
     return result
 
 
+# Combines the statistics and species list into a report.
 def create_report(observations, species):
     unique = unique_species(observations)
     return (
@@ -31,6 +35,7 @@ def create_report(observations, species):
     )
 
 
+# Collects the observed species and the species to count.
 number_of_sightings = int(input('Number of sightings: '))
 observations = []
 for sighting_number in range(number_of_sightings):
@@ -42,6 +47,7 @@ total, different_species, species_count, distinct_species = create_report(
     observations, species_to_count
 )
 
+# Displays the calculated statistics.
 print(f'Total sightings: {total}')
 print(f'Different species: {different_species}')
 print(f'Sightings of {species_to_count}: {species_count}')
