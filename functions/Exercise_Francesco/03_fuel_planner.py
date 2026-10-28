@@ -1,12 +1,9 @@
-# Calculates the fuel needed for one stage.
 def calculate_stage_fuel(distance, fuel_per_unit):
     return distance * fuel_per_unit
 
-# Calculates the fuel reserve as a percentage.
 def calculate_reserve(required_fuel, reserve_percent):
     return required_fuel * reserve_percent / 100
 
-# Adds the stage fuel requirements and reserve.
 def calculate_total_fuel(stage_fuels, reserve_percent):
     required_fuel = 0
     for stage_fuel in stage_fuels:
@@ -15,7 +12,6 @@ def calculate_total_fuel(stage_fuels, reserve_percent):
     reserve_fuel = calculate_reserve(required_fuel, reserve_percent)
     return required_fuel + reserve_fuel
 
-# Calculates total fuel needs from stage distances and fuel rates.
 def mission_summary(distances, fuel_rates, reserve_percent):
     stage_fuels = []
     for index in range(len(distances)):
@@ -23,7 +19,6 @@ def mission_summary(distances, fuel_rates, reserve_percent):
     return calculate_total_fuel(stage_fuels, reserve_percent)
 
 
-# Collects the distance and fuel rate for each stage.
 number_of_stages = int(input('Number of stages: '))
 distances = []
 fuel_rates = []
@@ -39,11 +34,9 @@ for stage in range(1, number_of_stages + 1):
     stage_fuels.append(stage_fuel)
 
 reserve_percent = float(input('Reserve percentage: '))
-# Displays the fuel needed for each numbered stage.
 for stage, stage_fuel in enumerate(stage_fuels, start=1):
     print(f'Stage {stage} fuel: {stage_fuel}')
 
-# Calculates fuel before reserve, the reserve, and the total requirement.
 fuel_before_reserve = 0
 for stage_fuel in stage_fuels:
     fuel_before_reserve += stage_fuel
