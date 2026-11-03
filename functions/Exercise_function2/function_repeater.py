@@ -9,7 +9,7 @@ def repeat(times):
         return wrapper
     return decorator
 
-
+#Bonus aufgabe
 def print_result():
     def decorator(func):
         def wrapper(*args, **kwargs):

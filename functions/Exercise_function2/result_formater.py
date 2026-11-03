@@ -6,6 +6,7 @@ def format_result(prefix, suffix):
         return wrapper
     return decorator
 
+#Bonus aufgabe
 def transform_result(operation):
     def decorator(func):
         def wrapper(*args, **kwargs):
