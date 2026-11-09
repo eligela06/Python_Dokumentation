@@ -181,16 +181,16 @@ def change_turn():
         turn = "Player"
 
 
-def clear_terminal_ide():
-    print("\033[H\033[J", end="")
+# def clear_terminal_ide():
+#     print("\033[H\033[J", end="")
 
-def clear_terminal():
-    os.system('cls' if os.name == 'nt' else 'clear')
+# def clear_terminal():
+#     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Game Loop
 while game_loop:
-    clear_terminal_ide()
-    clear_terminal()
+    # clear_terminal_ide()
+    # clear_terminal()
     # Menü aufrufen
     menü()
     if menü_choice == 1:

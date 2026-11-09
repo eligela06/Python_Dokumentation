@@ -8,8 +8,8 @@ ranger = my_range(0,120)
 for x in ranger:
     print(x)
 
-abc = ['']
-for code in range(ord('A'), ord('z') + 1):
-    abc.append(chr(code))
-print(abc)
-print(abc.index('A'))
+# abc = ['']
+# for code in range(ord('A'), ord('z') + 1):
+#     abc.append(chr(code))
+# print(abc)
+# print(abc.index('A'))
