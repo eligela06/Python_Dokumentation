@@ -1,47 +1,60 @@
 """
-Praxisaufgabe 2: Lagerbestand und Bestellung verwalten
+Praxisaufgabe: Bestellverarbeitung reparieren und erweitern
 
-Ein kleines Geschaeft nimmt eine Bestellung mit mehreren Positionen entgegen.
-Bevor die Bestellung verarbeitet wird, muss geprueft werden, ob alle Artikel
-im Lager vorhanden sind und die bestellte Menge verfuegbar ist.
+Ein Shop verarbeitet Bestellungen mit mehreren Positionen. Der bestehende
+Code hat Fehler und muss vor dem Einsatz repariert werden.
 
-Implementiere `verarbeite_bestellung(lager, bestellung)`.
+Aufgabe A - `verarbeite_bestellung(lager, bestellung)` reparieren:
+- Jeder Bestellposten ist ein Tupel `(artikel, menge)`.
+- Artikel koennen mehrfach in einer Bestellung vorkommen.
+- Pruefe, ob die Gesamtmenge jedes Artikels verfuegbar ist.
+- Ist ein Artikel unbekannt oder nicht ausreichend auf Lager, lehne die
+  gesamte Bestellung ab und liefere `(False, lager_kopie)` zurueck.
+- Bei erfolgreicher Bestellung liefere `(True, neuer_lagerbestand)` zurueck.
+- Veraendere das uebergebene `lager` niemals, weder bei Erfolg noch bei
+  Ablehnung.
 
-Eingaben:
-- `lager`: Dictionary aus Artikelname und verfuegbarer Menge
-- `bestellung`: Liste von `(artikel, menge)`-Tupeln
-- Artikel und Mengen sind Strings beziehungsweise positive ganze Zahlen.
-  Ein Artikel darf in der Bestellung mehrmals vorkommen.
-
-Anforderungen:
-- Addiere mehrere Positionen desselben Artikels, bevor du den Lagerbestand
-  pruefst.
-- Ist ein Artikel unbekannt oder die Gesamtmenge nicht verfuegbar, lehne die
-  ganze Bestellung ab. Gib dann `(False, lager_kopie)` zurueck; der uebergebene
-  Lagerbestand darf nicht veraendert werden.
-- Wenn alle Positionen erfuellbar sind, ziehe die bestellten Mengen ab und
-  gib `(True, neuer_lagerbestand)` zurueck.
-- Veraendere das uebergebene Dictionary auch bei einer erfolgreichen
-  Bestellung nicht direkt, sondern liefere ein neues Dictionary.
+Aufgabe B - `fasse_bestellung_zusammen(bestellung)` ergaenzen:
+- Gib ein Dictionary mit der Gesamtmenge pro Artikel zurueck.
+- Die Reihenfolge der Artikel soll der ersten Nennung in der Bestellung
+  entsprechen.
 
 Beispiel:
     lager = {"Laptop": 3, "Maus": 5}
     bestellung = [("Maus", 2), ("Laptop", 1), ("Maus", 1)]
+    fasse_bestellung_zusammen(bestellung)
+    -> {"Maus": 3, "Laptop": 1}
     verarbeite_bestellung(lager, bestellung)
     -> (True, {"Laptop": 2, "Maus": 2})
-    # `lager` ist danach weiterhin {"Laptop": 3, "Maus": 5}.
 
-Beispiel fuer eine abgelehnte Bestellung:
-    verarbeite_bestellung(
-        {"Laptop": 3, "Maus": 5},
-        [("Laptop", 1), ("Maus", 6)],
-    )
-    -> (False, {"Laptop": 3, "Maus": 5})
-
-Teste zusaetzlich eine Bestellung mit einem unbekannten Artikel und eine
-Bestellung, die den Lagerbestand genau auf null bringt.
+Weitere Tests:
+- Eine Bestellung mit unbekanntem Artikel.
+- Mehrere Positionen, deren Summe den Lagerbestand uebersteigt.
+- Eine Bestellung, die einen Artikelbestand genau auf null bringt.
+- Pruefe nach jedem Aufruf, dass das urspruengliche `lager` unveraendert ist.
 """
 
 
 def verarbeite_bestellung(lager, bestellung):
+    neuer_lagerbestand = lager
+
+    for artikel, menge in bestellung:
+        if artikel not in neuer_lagerbestand:
+            return False, neuer_lagerbestand
+        if neuer_lagerbestand[artikel] < menge:
+            return False, neuer_lagerbestand
+        neuer_lagerbestand[artikel] -= menge
+
+    return True, neuer_lagerbestand
+
+
+def fasse_bestellung_zusammen(bestellung):
     pass
+
+
+if __name__ == "__main__":
+    lager = {"Laptop": 3, "Maus": 5}
+    bestellung = [("Maus", 2), ("Laptop", 1), ("Maus", 1)]
+    print("Zusammenfassung:", fasse_bestellung_zusammen(bestellung))
+    print("Bestellung:", verarbeite_bestellung(lager, bestellung))
+    print("Urspruengliches Lager:", lager)

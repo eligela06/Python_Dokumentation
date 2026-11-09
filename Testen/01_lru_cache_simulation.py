@@ -1,35 +1,40 @@
 """
-Praxisaufgabe 1: LRU-Cache simulieren
+Praxisaufgabe: LRU-Cache reparieren und erweitern
 
-Ein Cache speichert haeufig benoetigte Werte, damit sie schneller verfuegbar
-sind. Der Cache hat eine feste Kapazitaet. Ist er voll, wird beim Speichern
-eines neuen Schluessels der am laengsten nicht verwendete Eintrag entfernt
-(Least Recently Used, kurz LRU).
+Du uebernimmst einen kleinen Cache, der in einem Projekt verwendet werden
+soll. Die erste Version ist bereits programmiert, hat aber noch Fehler.
+Untersuche den Code, korrigiere ihn und ergaenze die angekuendigte Funktion.
 
-Implementiere `simuliere_cache(kapazitaet, operationen)`.
+Der Cache speichert Eintraege in einer Liste:
+- vorne steht der am laengsten nicht verwendete Eintrag
+- hinten steht der zuletzt verwendete Eintrag
 
-Eingaben:
-- `kapazitaet`: positive ganze Zahl
-- `operationen`: Liste von Tupeln
-  - `("put", schluessel, wert)` speichert oder aktualisiert einen Wert
-  - `("get", schluessel)` liest einen Wert aus dem Cache
-
-Anforderungen:
-- Der Cache startet leer.
+Aufgabe A - vorhandenen Code reparieren:
+- `get` liefert den gespeicherten Wert oder `None`, wenn der Schluessel fehlt.
 - Ein erfolgreicher `get` macht den Eintrag zum zuletzt verwendeten.
-- Ein `get` fuer einen fehlenden Schluessel liefert `None` und veraendert die
-  Reihenfolge nicht.
-- Ein `put` fuer einen schon vorhandenen Schluessel aktualisiert den Wert und
-  macht den Eintrag zum zuletzt verwendeten.
-- Bei einem neuen `put` in einem vollen Cache wird der am laengsten nicht
-  verwendete Eintrag entfernt.
-- Gib ein Tupel `(ergebnisse, cache_eintraege)` zurueck. `ergebnisse` enthaelt
-  die Rueckgabewerte aller `get`-Operationen in ihrer Reihenfolge.
-  `cache_eintraege` ist eine Liste von `(schluessel, wert)`-Tupeln, geordnet
-  vom am laengsten nicht verwendeten bis zum zuletzt verwendeten Eintrag.
-- Verwende fuer diese Aufgabe keine fertige Cache-Klasse oder `OrderedDict`.
+- `put` speichert einen neuen Eintrag oder aktualisiert einen vorhandenen.
+  Ein aktualisierter Eintrag gilt danach als zuletzt verwendet.
+- Ist der Cache voll und kommt ein neuer Schluessel dazu, wird der am
+  laengsten nicht verwendete Eintrag entfernt.
+- Ein fehlgeschlagener `get` veraendert die Reihenfolge nicht.
 
-Beispiel:
+Aufgabe B - Funktion ergaenzen:
+- Implementiere `berechne_trefferquote(statistik)`.
+- Die Funktion bekommt das Statistik-Dictionary aus `simuliere_cache`.
+- Sie gibt die Trefferquote in Prozent zurueck, auf eine Nachkommastelle
+  gerundet.
+- Gibt es keine `get`-Aufrufe, soll die Funktion `0.0` zurueckgeben.
+
+Schnittstellen:
+- `simuliere_cache(kapazitaet, operationen)` gibt
+  `(ergebnisse, cache_eintraege, statistik)` zurueck.
+- `ergebnisse` enthaelt die Ergebnisse aller `get`-Aufrufe.
+- `cache_eintraege` ist die finale Liste von `(schluessel, wert)`-Tupeln.
+- `statistik` enthaelt `treffer` und `fehlversuche` fuer `get`-Aufrufe.
+- `berechne_trefferquote(statistik)` gibt einen Prozentwert zwischen 0.0 und
+  100.0 zurueck.
+
+Beispiel fuer den Cache:
     operationen = [
         ("put", "A", 1),
         ("put", "B", 2),
@@ -38,15 +43,80 @@ Beispiel:
         ("get", "B"),
         ("get", "A"),
     ]
-    simuliere_cache(2, operationen)
-    -> ([1, None, 1], [("C", 3), ("A", 1)])
 
-Teste zusaetzlich:
-- Ein Cache mit Kapazitaet 1.
-- Das Aktualisieren eines vorhandenen Schluessels.
-- Mehrere `get`-Operationen auf denselben Eintrag.
+Erwartetes Ergebnis nach der Reparatur:
+    (
+        [1, None, 1],
+        [("C", 3), ("A", 1)],
+        {"treffer": 2, "fehlversuche": 1},
+    )
+    berechne_trefferquote({"treffer": 2, "fehlversuche": 1}) -> 66.7
+
+Teste auch selbst:
+- Kapazitaet 1.
+- Einen vorhandenen Schluessel aktualisieren.
+- Mehrere get-Aufrufe auf denselben Eintrag.
+- Einen fehlgeschlagenen get.
+- Keine get-Aufrufe (Trefferquote 0.0).
 """
 
 
 def simuliere_cache(kapazitaet, operationen):
+    cache = []
+    ergebnisse = []
+    treffer = 0
+    fehlversuche = 0
+
+    for operation in operationen:
+        aktion = operation[0]
+        schluessel = operation[1]
+
+        if aktion == "get":
+            gefunden = False
+            for cache_schluessel, wert in cache:
+                if cache_schluessel == schluessel:
+                    ergebnisse.append(wert)
+                    treffer += 1
+                    gefunden = True
+                    break
+            if not gefunden:
+                ergebnisse.append(None)
+                fehlversuche += 1
+
+        elif aktion == "put":
+            wert = operation[2]
+            gefunden = False
+            for index, (cache_schluessel, alter_wert) in enumerate(cache):
+                if cache_schluessel == schluessel:
+                    cache[index] = (schluessel, wert)
+                    gefunden = True
+                    break
+
+            if not gefunden:
+                if len(cache) >= kapazitaet:
+                    cache.pop()
+                cache.append((schluessel, wert))
+
+    statistik = {"treffer": treffer, "fehlversuche": fehlversuche}
+    return ergebnisse, cache, statistik
+
+
+def berechne_trefferquote(statistik):
     pass
+
+
+if __name__ == "__main__":
+    operationen = [
+        ("put", "A", 1),
+        ("put", "B", 2),
+        ("get", "A"),
+        ("put", "C", 3),
+        ("get", "B"),
+        ("get", "A"),
+    ]
+
+    ergebnisse, cache, statistik = simuliere_cache(2, operationen)
+    print("Ergebnisse:", ergebnisse)
+    print("Cache:", cache)
+    print("Statistik:", statistik)
+    print("Trefferquote:", berechne_trefferquote(statistik), "%")
