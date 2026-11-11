@@ -1,0 +1,30 @@
+{
+  "folders": [
+    {
+      "name": "Python Lernen",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.venv": true,
+      "**/venv": true,
+      "**/__pycache__": true,
+      "**/*.pyc": true,
+      "**/.DS_Store": true
+    },
+    "search.exclude": {
+      "**/.git": true,
+      "**/.venv": true,
+      "**/venv": true,
+      "**/__pycache__": true,
+      "99_material": true
+    },
+    "explorer.compactFolders": false,
+    "explorer.sortOrder": "default",
+    "breadcrumbs.enabled": true,
+    "workbench.startupEditor": "readme",
+    "python.terminal.executeInFileDir": true
+  }
+}
