@@ -26,6 +26,7 @@ class Bankkonto:
         print(f"Banknummer: {self.banknummer}")
         print(f"Kontostand: {self.kontostand}")
 
+
 elia_konto = Bankkonto("Elia", 200, "elia")
 
 lenny_konto = Bankkonto("Lenny", 5, "lenny")
@@ -33,5 +34,9 @@ lenny_konto = Bankkonto("Lenny", 5, "lenny")
 max_konto = Bankkonto("Max", 1200, "max")
 
 dimo_konto = Bankkonto("Dimo", 60, "dimo")
+
+lenny_konto.datenausgeben
+
+lenny_konto.abheben(20000)
 
 lenny_konto.datenausgeben
