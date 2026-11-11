@@ -31,6 +31,7 @@ def calc_faster_elev(etage):
         else: 
             return 2
 
+
 def drive(choice, elevator):
     global elevator1, elevator2, aktuelle_etage
     if elevator == 1:
