@@ -32,8 +32,6 @@ class Book(LibraryItem):
         status = str("Available" if self.available == True else "Borrowed")
         return f"{self.title} by {self.author} ({self.year}) - {status}"
 
-
-
 class Magazine(LibraryItem):
     def __init__(self, title, year, issue):
         super().__init__(title, year)
