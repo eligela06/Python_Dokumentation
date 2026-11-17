@@ -53,6 +53,20 @@ class Scheduler:
     def __len__(self):
         return len(self.tasks)
 
+class DependentTask(Task):
+    def __init__(self, name, dependency, message):
+        super().__init__(name)
+        self.message = message
+        self.dependency = dependency
+
+    def execute(self):
+        if self.dependency.executions == 0:
+            print("Waiting for dependency")
+            return
+
+        print(self.message)
+        super().execute()
+
 
 # task1 = PrintTask("Greeting", "Hello!")
 # task2 = CounterTask("Counter A", 10, 2)

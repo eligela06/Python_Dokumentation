@@ -1,4 +1,5 @@
 class ShoppingCart:
+
     def __init__(self):
         self.cart = []
 
@@ -18,21 +19,30 @@ class ShoppingCart:
 
     def total(self):
         return sum(
-            product.get_price(quantity) * (1 + product.tax_rate)
+            product.get_price(quantity) * (1 + Product.tax_rate)
             for product, quantity in self.cart
         )
 
     def __len__(self):
         return sum(quantity for el, quantity in self.cart)
 
+
 class Product:
+
+    tax_rate = 0.10
+
     def __init__(self, name, price):
         self.name = name
         self.price = price  
-        self.tax_rate = 0.10
+        
         
     def __str__(self):
-        return f"{self.name}: ${round(self.price, 2)}"
+        return f"{self.name}: ${self.price:.2f}"
+
+    @classmethod
+    def set_tax_rate(cls, rate):
+        """Set the rate on this class; subclass values shadow, not change, parent values."""
+        cls.tax_rate = rate
 
     @property
     def price(self):
@@ -48,6 +58,7 @@ class Product:
         return self.price * quantity
 
 class DiscountedProduct(Product):
+
     def __init__(self, name, price, discount):
         super().__init__(name, price)
         self.discount = discount
@@ -56,8 +67,10 @@ class DiscountedProduct(Product):
         return super().get_price(quantity) * (1 - self.discount / 100)
 
 class BulkProduct(Product):
+
     def __init__(self, name, price, min_quantity, bulk_discount):
         super().__init__(name, price)
+
         self.min_quantity = min_quantity
         self. bulk_discount = bulk_discount
 
@@ -65,7 +78,6 @@ class BulkProduct(Product):
         if quantity >= self.min_quantity:
             return super().get_price(quantity) * (1 - self.bulk_discount / 100)
         return super().get_price(quantity)
-
 
 
 
@@ -87,4 +99,3 @@ laptop.price = -100
 
 print(laptop.price)     # 0
 print(cart.subtotal())  # 122.0
-
