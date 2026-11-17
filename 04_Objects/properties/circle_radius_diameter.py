@@ -13,6 +13,7 @@ class Circle:
             self.radius = diameter / 2
         else:
             self.radius = circumference / (2 * pi)
+        
 
     @property
     def diameter(self):

@@ -53,6 +53,7 @@ class Scheduler:
     def __len__(self):
         return len(self.tasks)
 
+
 class DependentTask(Task):
     def __init__(self, name, dependency, message):
         super().__init__(name)

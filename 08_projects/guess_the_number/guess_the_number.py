@@ -6,7 +6,7 @@ guess = 0
 guess_count = 0
 message = "Gebe nur Zahlen ein!"
 score = 0
-
+game = True
 connection = sqlite3.connect(Path(__file__).with_name("scores.db"))
 cursor = connection.cursor()
 
