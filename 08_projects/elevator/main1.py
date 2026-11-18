@@ -6,6 +6,8 @@ class Elevator:
         self.floor = 0
         self.distance = 0
 
+
+
     def drive(self, target):
         while self.floor != target:
             print(self.floor)
