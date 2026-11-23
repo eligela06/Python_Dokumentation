@@ -41,10 +41,9 @@ class Product:
 
     @classmethod
     def set_tax_rate(cls, rate):
-        """Set the rate on this class; subclass values shadow, not change, parent values."""
         cls.tax_rate = rate
 
-    @property
+    @property 
     def price(self):
         return self._price
 
@@ -99,16 +98,16 @@ class BulkProduct(Product):
 # print(cart.subtotal())  # 122.0
 
 
-# shopping_cart = ShoppingCart()
-# shopping_cart.add(Product("Laptop", 1000), 1)
-# shopping_cart.add(DiscountedProduct("Mouse", 100, 20), 1)
-# shopping_cart.add(BulkProduct("Notebook", 10, 5, 20), 1)
-# # Using default tax rates
-# assert shopping_cart.subtotal() == 1000 + 100 * 0.8 + 10
-# assert shopping_cart.total() == 1000 * 1.1 + 100 * 0.8 * 1.1 + 10 * 1.1
-# # Using custom tax rates
-# Product.set_tax_rate(0.2)
-# DiscountedProduct.set_tax_rate(0.3)
-# BulkProduct.set_tax_rate(0.4)
-# assert shopping_cart.subtotal() == 1000 + 100 * 0.8 + 10
-# assert shopping_cart.total() == 1000 * 1.2 + 100 * 0.8 * 1.3 + 10 * 1.4
+shopping_cart = ShoppingCart()
+shopping_cart.add(Product("Laptop", 1000), 1)
+shopping_cart.add(DiscountedProduct("Mouse", 100, 20), 1)
+shopping_cart.add(BulkProduct("Notebook", 10, 5, 20), 1)
+# Using default tax rates
+assert shopping_cart.subtotal() == 1000 + 100 * 0.8 + 10
+assert shopping_cart.total() == 1000 * 1.1 + 100 * 0.8 * 1.1 + 10 * 1.1
+# Using custom tax rates
+Product.set_tax_rate(0.2)
+DiscountedProduct.set_tax_rate(0.3)
+BulkProduct.set_tax_rate(0.4)
+assert shopping_cart.subtotal() == 1000 + 100 * 0.8 + 10
+assert shopping_cart.total() == 1000 * 1.2 + 100 * 0.8 * 1.3 + 10 * 1.4
