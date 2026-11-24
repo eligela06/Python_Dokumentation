@@ -45,6 +45,7 @@ def insert_userdata(user, attempts):
 def random_number():
     global number
     number = random.randint(1,100)
+    return number
 
 
 def take_input():
@@ -53,7 +54,7 @@ def take_input():
 
 
 def check_win():
-    global number, guess, game, score
+    global game
     if number == guess:
         print("Du hast gewonnen")
         guesses_plus()
@@ -75,13 +76,12 @@ def higher_lower():
 def guesses_plus():
     global guess_count
     guess_count += 1
+    return guess_count
 
 def print_guess_count():
-    global guess_count
     print(f"Versuche: {guess_count}")
 
 def except_error_message():
-    global message
     print(message)
 
 random_number()
