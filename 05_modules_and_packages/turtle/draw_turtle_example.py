@@ -5,7 +5,7 @@ screen.setup(800, 600)
 screen.bgcolor("black")
 
 t = turtle.Turtle()
-t.color("yellow", "orange")
+t.color("yellow", "black")
 t.width(10)
 
 

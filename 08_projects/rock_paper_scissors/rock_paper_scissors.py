@@ -20,12 +20,13 @@ botSymbol = ""
 def playerName():
     global Player
     Player = input("Gib deinen Namen ein: ")
-
+    return Player
 
 def giveBotName():
     global Bot
     Bot = input("Gib deinem Gegner einen Namen: ")
     print('\n')
+    return Bot
     
 
 def number_to_symbol_p():
