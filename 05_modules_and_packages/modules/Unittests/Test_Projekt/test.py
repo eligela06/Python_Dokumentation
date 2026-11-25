@@ -28,3 +28,5 @@ runner = unittest.TextTestRunner()  # Der Runner führt die Tests aus und zeigt 
 result = runner.run(suite)  # Startet alle Tests in der Suite. Das zurückgegebene TestResult enthält z. B. die Anzahl der Tests und mögliche Fehler.
 
 print(f'Tests run: {result.testsRun}')
+
+print()
